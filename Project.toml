@@ -1,10 +1,13 @@
 name = "EmulatorsTrainer"
 uuid = "ef107171-9c1d-4869-9860-ac18fb1a7e36"
 authors = ["Marco Bonici <bonici.marco@gmail.com>"]
-version = "0.1.0"
+version = "0.2.0"
 
 [deps]
 DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+Distributed = "8ba89e20-285c-5b6f-9357-94700520ee1b"
+Distributions = "31c24e10-a181-5473-b8eb-7969acd0382f"
 JSON3 = "0f8b85d8-7281-11e9-16c2-39a750bddbf1"
 NPZ = "15e1cf62-19b3-5cfa-8e77-841668bca605"
+QuasiMonteCarlo = "8a4e6c94-4038-4cdc-81c3-7e6ffdb2a71b"
 Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
