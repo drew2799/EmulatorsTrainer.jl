@@ -35,3 +35,7 @@ addprocs_lsf(10)#this because I am using a lsf cluster. Use the appropriate one!
 end
 
 EmulatorsTrainer.compute_dataset(s, pars, root_dir, test_script)
+
+for i in workers()
+	rmprocs(i)
+end
