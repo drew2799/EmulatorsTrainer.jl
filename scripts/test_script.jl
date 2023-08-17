@@ -21,12 +21,13 @@ addprocs_lsf(10)#this because I am using a lsf cluster. Use the appropriate one!
     function test_script(my_dict::Dict, root_path)
         rand_str = root_path*"/"*randstring(10)
         mkdir(rand_str)
+        sleep(10)
         a = my_dict["a"]
         b = my_dict["b"]
         c = my_dict["c"]
         x = Array(LinRange(0,10,100))
         y = a .* x .^ 2 .+ b .* x .+ c
-        npzwrite(rand_str*"/result.npy")
+        npzwrite(rand_str*"/result.npy", y)
         open(rand_str*"/dict.json", "w") do io
             JSON3.write(io, my_dict)
         end
