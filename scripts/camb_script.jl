@@ -5,11 +5,12 @@ using EmulatorsTrainer
 using JSON3
 using Random
 
-addprocs_lsf(10)#this because I am using a lsf cluster. Use the appropriate one!
+
+#mkdir("/home/mbonici/test_camb")
+addprocs_lsf(100; bsub_flags=`-q medium -n 2 -M 6094`)#this because I am using a lsf cluster. Use the appropriate one!
 @everywhere begin
     using NPZ, EmulatorsTrainer, JSON3, Random, PyCall
     camb = pyimport("camb")
-
     pars = ["ln10As", "ns", "H0", "ombh2", "omch2", "tau"]
     lb = [2.5, 0.88, 40., 0.1933, 0.08, 0.02]
     ub = [3.5, 1.05, 100., 0.2533, 0.2, 0.12]
@@ -18,8 +19,7 @@ addprocs_lsf(10)#this because I am using a lsf cluster. Use the appropriate one!
     n = 1000
     s = EmulatorsTrainer.create_training_dataset(n, lb, ub)
 
-    root_dir = "/home/mbonici/test_emu"#this is tuned to my dir, use the right one for you!
-
+    root_dir = "/home/mbonici/test_camb"#this is tuned to my dir, use the right one for you!
 
     function camb_script(CosmoDict, root_path)
         rand_str = root_path*"/"*randstring(10)
@@ -33,14 +33,14 @@ addprocs_lsf(10)#this because I am using a lsf cluster. Use the appropriate one!
         # set_matter_power
         kmax = 10
         k_per_logint = 130
-        nonlinear = True
-        accurate_massive_neutrinos = True
+        nonlinear = true
+        accurate_massive_neutrinos = true
 
         # set_accuracy
         AccuracyBoost = 2
         lSampleBoost = 2
         lAccuracyBoost = 2
-        DoLateRadTruncation = False
+        DoLateRadTruncation = false
 
         pars = camb.CAMBparams()
         pars.set_cosmology(H0 = round(CosmoDict["H0"]; sigdigits=6),
@@ -62,10 +62,11 @@ addprocs_lsf(10)#this because I am using a lsf cluster. Use the appropriate one!
 
         pars.set_dark_energy(w=-1., wa=0., dark_energy_model="fluid")
         pars.WantTransfer = 1
-        pars.NonLinear = model.NonLinear_both # Non-linear matter power & lensing, HMcode
+        pars.NonLinear = camb.model.NonLinear_both # Non-linear matter power & lensing, HMcode
         pars.Transfer.kmax = kmax
         pars.Transfer.k_per_logint = k_per_logint
         pars.Transfer.accurate_massive_neutrinos = accurate_massive_neutrinos
+
 
         pars.set_accuracy(AccuracyBoost=AccuracyBoost,
                         lSampleBoost=lSampleBoost,
@@ -83,18 +84,19 @@ addprocs_lsf(10)#this because I am using a lsf cluster. Use the appropriate one!
 
 
 
-        ll = np.arange(totCL.shape[0])
-        len_l, _ = size(totCL)
-        ll = Array(0:len_l)
+        #ll = np.arange(totCL.shape[0])
+        #len_l, _ = size(totCL)
+        #ll = Array(0:len_l)
         clTT = totCL[:,1]
         clEE = totCL[:,2]
-        #clBB = totCL[:,3] @fbianchini? is this right?
+        clBB = totCL[:,3]# @fbianchini? is this right?
         clTE = totCL[:,4]
         clPP = lens_potential[:,1]
 
         npzwrite(rand_str*"/cl_TT.npy", clTT)
         npzwrite(rand_str*"/cl_EE.npy", clEE)
         npzwrite(rand_str*"/cl_TE.npy", clTE)
+        npzwrite(rand_str*"/cl_BB.npy", clBB)
         npzwrite(rand_str*"/cl_PP.npy", clPP)
 
         open(rand_str*"/capse_dict.json", "w") do io
@@ -105,8 +107,8 @@ addprocs_lsf(10)#this because I am using a lsf cluster. Use the appropriate one!
 
 end
 
-EmulatorsTrainer.compute_dataset(s, pars, root_dir, test_script)
+EmulatorsTrainer.compute_dataset(s, pars, root_dir, camb_script)
 
 for i in workers()
-	rmprocs(i)
+    rmprocs(i)
 end
