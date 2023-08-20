@@ -28,8 +28,6 @@ In order to use the dataset creation feature, you need to write a function that 
 
 ### Emulators validation
 
-
-
 ### Authors
 
 - Marco Bonici, INAF - Institute of Space Astrophysics and Cosmic Physics (IASF), Milano
