@@ -7,7 +7,7 @@
 In order to train and validate an emulator, there are three major steps:
 
 - **Dataset creation**. You need to create a dataset of ground-truth prediction (in most of our application, this relies on Boltzmann solvers or Perturbation Theory calculations)
-- **Emulators Trainings**. After creating the training datasets, we need to actually train the emulators.
+- **Emulators training**. After creating the training datasets, we need to actually train the emulators.
 - **Emulators validation**. The last step is the emulator validation, in order to assess the accuracy of the trained emulator.
 
 `EmulatorsTrainer.jl` provides utilities for each of this three steps.
@@ -15,6 +15,20 @@ In order to train and validate an emulator, there are three major steps:
 ### Dataset creation
 
 According to the emulator you are training (`Bora.jl`, `Capse.jl`, `Effortjl`, etc...), specific dependencies and commands are going to be used. The design principle behind `EmulatorsTrainer.jl` is that it will contain only functions independent of the specific emulators to be trained. There will be no `CAMB`, `CLASS`, `pybird`, `velocileptors` dependencies. This is an intentional choice: the user will have to write its own functions to compute the ground-truth.
+
+In order to use the dataset creation feature, you need to write a function that computes your observables and stores it locally. The function object should receive two positional arguments as input, the dictionary with the value of the parameters and the root where to store the resulta of the computation.
+
+!!! tip "Examples"
+    Although we do not incorporate anything specific in this package, we have a gallery with some working examples.
+
+!!! warning "Again on examples"
+    We have not yet released any example. We plan to release a bunch of them in the near future.
+
+### Emulators training
+
+### Emulators validation
+
+
 
 ### Authors
 
