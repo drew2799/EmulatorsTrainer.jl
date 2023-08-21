@@ -14,7 +14,7 @@ In order to train and validate an emulator, there are three major steps:
 
 ### Dataset creation
 
-According to the emulator you are training (`Bora.jl`, `Capse.jl`, `Effortjl`, etc...), specific dependencies and commands are going to be used. The design principle behind `EmulatorsTrainer.jl` is that it will contain only functions independent of the specific emulators to be trained. There will be no `CAMB`, `CLASS`, `pybird`, `velocileptors` dependencies. This is an intentional choice: the user will have to write its own functions to compute the ground-truth.
+According to the emulator you are training (`Bora.jl`, `Capse.jl`, `Effort.jl`, etc...), specific dependencies and commands are going to be used. The design principle behind `EmulatorsTrainer.jl` is that it will contain only functions independent of the specific emulators to be trained. There will be no `CAMB`, `CLASS`, `pybird`, `velocileptors` dependencies. This is an intentional choice: the user will have to write its own functions to compute the ground-truth.
 
 In order to use the dataset creation feature, you need to write a function that computes your observables and stores it locally. The function object should receive two positional arguments as input, the dictionary with the value of the parameters and the root where to store the resulta of the computation.
 
@@ -28,7 +28,7 @@ In order to use the dataset creation feature, you need to write a function that 
 
 ### Emulators validation
 
-### Authors
+## Authors
 
 - Marco Bonici, INAF - Institute of Space Astrophysics and Cosmic Physics (IASF), Milano
 - Federico Bianchini, PostDoctoral researcher at Stanford
