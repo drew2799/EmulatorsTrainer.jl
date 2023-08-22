@@ -32,9 +32,9 @@ function sort_residuals(residuals, n_output, n_elements)
     end
     final_residuals = zeros(3, n_output)
 
-    final_residuals[1,:] = sorted_residuals[trunc(Int, (n_combs*0.68)),:]
-    final_residuals[2,:] = sorted_residuals[trunc(Int, (n_combs*0.95)),:]
-    final_residuals[3,:] = sorted_residuals[trunc(Int, (n_combs*0.99)),:]
+    final_residuals[1,:] = sorted_residuals[trunc(Int, (n_elements*0.68)),:]
+    final_residuals[2,:] = sorted_residuals[trunc(Int, (n_elements*0.95)),:]
+    final_residuals[3,:] = sorted_residuals[trunc(Int, (n_elements*0.99)),:]
 
     return final_residuals
 end
