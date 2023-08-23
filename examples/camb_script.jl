@@ -5,8 +5,6 @@ using EmulatorsTrainer
 using JSON3
 using Random
 
-
-#mkdir("/home/mbonici/test_camb")
 addprocs_lsf(100; bsub_flags=`-q medium -n 2 -M 6094`)#this because I am using a lsf cluster. Use the appropriate one!
 @everywhere begin
     using NPZ, EmulatorsTrainer, JSON3, Random, PyCall

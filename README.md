@@ -11,7 +11,8 @@ This repository contains code used to perform the training of the CosmologicalEm
 Step | Status| Comment
 :------------ | :-------------| :-------------
 Utils for training | (:heavy_check_mark:) | Implemented, needs some polishing
-Distributed dataset creation | :construction: | WIP
+Distributed dataset creation | (:heavy_check_mark:) | Implemented, needs some polishing
+Utils for validation | (:heavy_check_mark:) | Implemented, needs some polishing
 Active learning | :construction: | WIP
 
 ## Authors
