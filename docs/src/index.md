@@ -79,12 +79,18 @@ After adding the processes, create a `begin`-`end` quote, such as the the follow
 end
 ```
 
-What is done in this block?
+What has been done in the previous block?
 
-- We import again the necessary modules, such that they are available to the loaded processes
+- We import again the necessary modules, making them available to the loaded processes
 - We import camb as well, using `PyCall`
 - We create the combination of input cosmological parameters, after setting the lower and the upper bounds (`lb` and `ub`)
 - We define the `camb_script` method, which takes as input the dictionary with the input cosmological parameters, computes `stuff` using `CAMB` and store both the dictionary and `stuff` in a generated subfolder
+
+!!! note "CAMB and CLASS usage"
+    Actually there are no `Julia` wrapper for either `CAMB` or `CLASS`. However, it is still possible to use them within `Julia`, using thepackages devoted to this goal:
+    - [`PyCall.jl`](https://github.com/JuliaPy/PyCall.jl) and [`PythonCall.jl`](https://github.com/cjdoris/PythonCall.jl) can be used to call `Python` code within `Julia`.
+    - [`Conda.jl`](https://github.com/JuliaPy/Conda.jl) and [`CondaPkg.jl`](https://github.com/cjdoris/CondaPkg.jl) can be used to manage `conda`- and `pip`-installable packages
+    This works also with other `Python` codes such as `velocileptor` and `pybird`.
 
 After this, the last missing command is
 
