@@ -9,6 +9,16 @@ function add_observable_df!(df::DataFrames.DataFrame, location::String, param_fi
     return nothing
 end
 
+function add_observable_df!(df::DataFrames.DataFrame, location::String, param_file::String,
+    observable_file::String, get_tuple::Function)
+    json_string = read(location*param_file, String)
+    cosmo_pars = JSON3.read(json_string)
+
+    observable = npzread(location*observable_file, "r")[first_idx:last_idx]
+    push!(df, observable)
+    return nothing
+end
+
 function load_df_directory!(df::DataFrames.DataFrame, Directory,
     add_observable_df!::Function)
     for (root, dirs, files) in walkdir(Directory)
