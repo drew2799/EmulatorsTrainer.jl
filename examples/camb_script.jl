@@ -5,8 +5,11 @@ using EmulatorsTrainer
 using JSON3
 using Random
 
+<<<<<<< HEAD:scripts/camb_script.jl
 
 #mkdir("/home/mbonici/test_camb")
+=======
+>>>>>>> bd23ad6f9d35b536617528869ae0af9167cb04b6:examples/camb_script.jl
 addprocs_lsf(100; bsub_flags=`-q medium -n 2 -M 6094`)#this because I am using a lsf cluster. Use the appropriate one!
 @everywhere begin
     using NPZ, EmulatorsTrainer, JSON3, Random, PyCall
@@ -67,7 +70,11 @@ addprocs_lsf(100; bsub_flags=`-q medium -n 2 -M 6094`)#this because I am using a
         pars.Transfer.k_per_logint = k_per_logint
         pars.Transfer.accurate_massive_neutrinos = accurate_massive_neutrinos
 
+<<<<<<< HEAD:scripts/camb_script.jl
         
+=======
+
+>>>>>>> bd23ad6f9d35b536617528869ae0af9167cb04b6:examples/camb_script.jl
         pars.set_accuracy(AccuracyBoost=AccuracyBoost,
                         lSampleBoost=lSampleBoost,
                         lAccuracyBoost=lAccuracyBoost,
@@ -110,5 +117,5 @@ end
 EmulatorsTrainer.compute_dataset(s, pars, root_dir, camb_script)
 
 for i in workers()
-	rmprocs(i)
+    rmprocs(i)
 end
