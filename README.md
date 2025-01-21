@@ -17,5 +17,5 @@ Active learning | :construction: | WIP
 
 ## Authors
 
-- Marco Bonici, PostDoctoral Researcher at INAF-IASF Milano,
+- Marco Bonici, PostDoctoral Researcher at Waterloo Centre for Astrophysics
 - Federico Bianchini, PostDoctoral researcher at Stanford
