@@ -1,4 +1,4 @@
-# EmulatorsTrainer.jl
+<img width="450" alt="bora_logo" src="https://github.com/user-attachments/assets/f38e70f7-b252-4204-8141-f1cf8f3cadc8">
 
 | **Documentation** | **Code style** |
 |:--------:|:----------------:|
