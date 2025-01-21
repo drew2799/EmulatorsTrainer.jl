@@ -1,4 +1,4 @@
-<img width="450" alt="bora_logo" src="https://github.com/user-attachments/assets/f38e70f7-b252-4204-8141-f1cf8f3cadc8">
+<img width="450" alt="bora_logo" src="https://github.com/user-attachments/assets/c064348f-4a28-4544-868c-1ac468f8a4a8">
 
 | **Documentation** | **Code style** |
 |:--------:|:----------------:|
