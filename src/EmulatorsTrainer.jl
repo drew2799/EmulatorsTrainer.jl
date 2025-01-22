@@ -10,5 +10,6 @@ using Random
 
 include("trainer.jl")
 include("farmer.jl")
+include("validator.jl")
 
 end # module EmulatorsTrainer

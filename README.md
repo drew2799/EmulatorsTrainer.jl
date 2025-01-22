@@ -1,4 +1,4 @@
-# EmulatorsTrainer.jl
+<img width="450" alt="bora_logo" src="https://github.com/user-attachments/assets/5b11c2dc-a78d-4fba-a0b4-c5c7d2f55158">
 
 | **Documentation** | **Code style** |
 |:--------:|:----------------:|
@@ -11,10 +11,11 @@ This repository contains code used to perform the training of the CosmologicalEm
 Step | Status| Comment
 :------------ | :-------------| :-------------
 Utils for training | (:heavy_check_mark:) | Implemented, needs some polishing
-Distributed dataset creation | :construction: | WIP
+Distributed dataset creation | (:heavy_check_mark:) | Implemented, needs some polishing
+Utils for validation | (:heavy_check_mark:) | Implemented, needs some polishing
 Active learning | :construction: | WIP
 
 ## Authors
 
-- Marco Bonici, PostDoctoral Researcher at INAF-IASF Milano,
+- Marco Bonici, PostDoctoral Researcher at Waterloo Centre for Astrophysics
 - Federico Bianchini, PostDoctoral researcher at Stanford
