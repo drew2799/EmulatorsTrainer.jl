@@ -4,12 +4,27 @@ function add_observable_df!(df::DataFrames.DataFrame, location::String, param_fi
     cosmo_pars = JSON3.read(json_string)
 
     observable = npzread(location*observable_file, "r")[first_idx:last_idx]
+  
     if !any(isnan.(observable))
         observable_filtered = get_tuple(cosmo_pars, observable)
         push!(df, observable_filtered)
     else
         @warn "File with NaN at "*location
     end
+  
+    processed_observable = get_tuple(cosmo_pars, observable)
+    push!(df, processed_observable)
+    return nothing
+end
+
+function add_observable_df!(df::DataFrames.DataFrame, location::String, param_file::String,
+    observable_file::String, get_tuple::Function)
+    json_string = read(location*param_file, String)
+    cosmo_pars = JSON3.read(json_string)
+
+    observable = npzread(location*observable_file, "r")
+    processed_observable = get_tuple(cosmo_pars, observable)
+    push!(df, processed_observable)
     return nothing
 end
 
