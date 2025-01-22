@@ -106,7 +106,7 @@ This command will execute `camb_script` for each combination of input cosmologic
 
 ## Authors
 
-- Marco Bonici, INAF - Institute of Space Astrophysics and Cosmic Physics (IASF), Milano
+- Marco Bonici, PostDoctoral researcher at Waterloo Centre for Astrophysics
 - Federico Bianchini, PostDoctoral researcher at Stanford
 
 ## Contributing
