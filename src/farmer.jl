@@ -9,7 +9,7 @@ end
 
 function compute_dataset(training_matrix::Matrix, params::Array{String}, root_dir::String, script_func::Function)
     n_pars, n_combs = size(training_matrix)
-    mkdir(root_dir)
+    mkpath(root_dir)
     @sync @distributed for idx in 1:n_combs
         train_dict = create_training_dict(training_matrix, idx, params)
         script_func(train_dict, root_dir)
